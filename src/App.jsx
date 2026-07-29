@@ -27,6 +27,15 @@ export default function App() {
       <Faq />
       <AboutMe />
       <ClosingMessage />
+      <footer className="border-t border-slate-200 bg-white px-6 py-8 text-center text-sm text-slate-600">
+        <p className="font-semibold text-[#1E3A5F]">Samuel DUCROS EI · TVA non applicable, art. 293 B du CGI</p>
+        <nav className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
+          <a className="hover:text-blue-700 hover:underline" href="/cgv">CGV</a>
+          <a className="hover:text-blue-700 hover:underline" href="/confidentialite">Politique de confidentialité</a>
+          <a className="hover:text-blue-700 hover:underline" href="/mentions-legales">Mentions légales</a>
+          <a className="hover:text-blue-700 hover:underline" href="/retractation">Rétractation</a>
+        </nav>
+      </footer>
     </main>
   );
 }
