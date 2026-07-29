@@ -7,8 +7,15 @@ import Faq from './components/Faq';
 import AboutMe from './components/AboutMe';
 import ClosingMessage from './components/ClosingMessage';
 import Testimonials from './components/Testimonials';
+import LegalPage from './LegalPage';
 
 export default function App() {
+  const route = window.location.pathname.replace(/\/$/, '') || '/';
+
+  if (['/cgv', '/confidentialite', '/mentions-legales', '/retractation'].includes(route)) {
+    return <LegalPage route={route} />;
+  }
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F8FAFC]">
       <HeroSection />

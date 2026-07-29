@@ -34,3 +34,10 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+.legal-content a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
