@@ -24,7 +24,7 @@ export default function AboutMe() {
             </h2>
             <div className="space-y-4 text-base leading-relaxed text-[#4B5563] sm:text-lg">
               <p>
-                Ancien élève de prépa MPSI/MP puis diplômé ingénieur en mathématiques appliquées, j’accompagne aujourd’hui exclusivement des étudiants de classes préparatoires scientifiques.
+                Ancien élève de prépa MPSI/MP puis diplômé ingénieur en mathématiques appliquées, j’accompagne des lycéens visant une prépa et des étudiants de classes préparatoires scientifiques.
               </p>
               <p>
                 Depuis plus de 800 heures de cours, j’aide des élèves à construire une méthode de travail solide, gagner en autonomie et retrouver confiance face aux exigences de la prépa.

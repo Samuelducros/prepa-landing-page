@@ -1,9 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
 
-export default function Plaquette() {
+export default function Plaquette({ url = '', compact = false }) {
+  if (!url) return null;
+
   return (
-    <section className="overflow-hidden px-6 py-20 sm:px-10 sm:py-32 lg:px-20 lg:py-40">
+    <section className={compact ? "mt-8 overflow-hidden rounded-3xl bg-[#F8FAFC] px-6 py-10 sm:px-10" : "overflow-hidden px-6 py-20 sm:px-10 sm:py-32 lg:px-20 lg:py-40"}>
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2 lg:gap-24">
         <Reveal>
           <div className="relative" style={{ transform: 'rotate(-4deg)' }}>
@@ -33,13 +35,7 @@ export default function Plaquette() {
             <p className="mb-8 max-w-md text-base leading-relaxed text-[#4B5563] sm:text-lg">
               Un document détaillé qui présente ma méthode, mon approche pédagogique et le déroulement de l’accompagnement.
             </p>
-            <a
-              href="/Plaquette_Accompagnement_Prepa_Samuel_Ducros.pdf"
-              className="group inline-flex min-h-[48px] items-center gap-2 rounded-2xl border-2 border-[#1E3A5F] px-7 py-4 text-sm font-semibold text-[#1E3A5F] transition-all duration-300 hover:bg-[#1E3A5F] hover:text-white sm:px-8 sm:text-base"
-            >
-              Télécharger la plaquette (PDF)
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
-            </a>
+            <a href={url} className="group inline-flex min-h-[48px] items-center gap-2 rounded-2xl border-2 border-[#1E3A5F] px-7 py-4 text-sm font-semibold text-[#1E3A5F] transition-all duration-300 hover:bg-[#1E3A5F] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3B82F6]">Télécharger la plaquette (PDF)<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} /></a>
           </div>
         </Reveal>
       </div>
