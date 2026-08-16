@@ -32,7 +32,7 @@ export function StageLanding(){return <Shell eyebrow="Stage Choc Prépa" title="
 <p className="mt-3 text-sm leading-6 text-slate-200">Formulaire rapide · Paiement proposé uniquement après validation de l’éligibilité</p>
 </>}>
 <section className="mt-8 grid gap-5 md:grid-cols-3">
-<Card variant="blue" title="Dates et format">19, 20 et 21 août 2026<br/>De 9 h 30 à 12 h<br/>Trois séances de 2 h 30 en visioconférence.</Card>
+<Card variant="blue" title="Dates et format">26, 27 et 28 août 2026<br/>De 9 h 30 à 12 h<br/>Trois séances de 2 h 30 en visioconférence.</Card>
 <Card variant="default" title="Pour qui ?">Étudiants entrant en première année de CPGE scientifique.</Card>
 <Card variant="yellow" title="Tarif et capacité">149 €<br/>20 participants maximum.</Card>
 </section>
