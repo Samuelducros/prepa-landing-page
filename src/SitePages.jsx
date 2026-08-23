@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Plaquette from './components/Plaquette';
-import { STAGE_FORM_URL, ACCOMPANIMENT_FORM_URL, CONTACT_ENDPOINT, ACCOMPANIMENT_BROCHURE_URL } from './siteConfig';
+import { STAGE_FORM_URL, ORIENTATION_BOOKING_URL, CONTACT_ENDPOINT, ACCOMPANIMENT_BROCHURE_URL } from './siteConfig';
 const Email=()=> <a className="font-semibold text-blue-700 underline" href="mailto:contact@samuel-ducros.fr">contact@samuel-ducros.fr</a>;
 const Shell=({eyebrow,title,intro,action,children})=>
 <main className="min-h-screen bg-[#F8FAFC] px-5 py-10 text-[#1E3A5F] sm:px-8">
@@ -30,6 +30,7 @@ const Card=({title,children,variant="default"})=>
 export function StageLanding(){return <Shell eyebrow="Stage Choc Prépa" title="Préparer son entrée en prépa scientifique" intro="Un stage intensif pour aborder la transition entre le lycée et la CPGE scientifique avec des repères concrets." action={<>
 <Button variant="hero" href={STAGE_FORM_URL} unavailableText="Les inscriptions au Stage seront disponibles prochainement. Pour toute question, contactez-nous par e-mail.">Vérifier mon éligibilité et m’inscrire</Button>
 <p className="mt-3 text-sm leading-6 text-slate-200">Formulaire rapide · Paiement proposé uniquement après validation de l’éligibilité</p>
+<a href="/orientation" className="mt-3 inline-block text-sm font-semibold text-white underline underline-offset-4 hover:text-[#F6B632]">Une question avant l’inscription ? Réserver un échange d’orientation.</a>
 </>}>
 <section className="mt-8 grid gap-5 md:grid-cols-3">
 <Card variant="blue" title="Dates et format">26, 27 et 28 août 2026<br/>De 9 h 30 à 12 h<br/>Trois séances de 2 h 30 en visioconférence.</Card>
@@ -89,8 +90,8 @@ la place n’est confirmée qu’après paiement réussi et contrôle de capacit
 </Shell>}
 
 export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement Prépa" title="Un accompagnement méthodologique pendant l’année" intro="Un accompagnement en petit groupe avec un suivi ciblé de chaque étudiant." action={<>
-<Button variant="hero" href={ACCOMPANIMENT_FORM_URL} unavailableText="Le questionnaire de qualification sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Vérifier si l’accompagnement est adapté</Button>
-<p className="mt-3 text-sm leading-6 text-slate-200">Questionnaire de qualification · Aucun engagement · Diagnostic proposé uniquement si le profil est adapté</p>
+<Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button>
+<p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 10 minutes pour faire le point sur votre situation.</p>
 </>}>
 <section className="mt-8 grid gap-5 md:grid-cols-3">
 <Card variant="blue" title="Public">Terminale visant une CPGE scientifique, première ou deuxième année de CPGE scientifique.</Card>
@@ -140,16 +141,15 @@ ils ne constituent pas une garantie de résultat.</p>
   </h2>
 
   <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-700">
-    Remplissez le questionnaire pour nous permettre d’étudier sa situation
-    avant de vous proposer, le cas échéant, un diagnostic.
+    Réservez un échange téléphonique de 10 minutes pour faire le point sur sa situation
+    et vous orienter vers la suite la plus adaptée.
   </p>
 
   <div className="mt-6 flex justify-center">
     <Button
-      href={ACCOMPANIMENT_FORM_URL}
-      unavailableText="Le questionnaire de qualification sera disponible prochainement. Pour toute question, contactez-nous par e-mail."
+      href="/orientation"
     >
-      Vérifier si l’accompagnement est adapté
+      Réserver un échange d’orientation
     </Button>
   </div>
 
@@ -162,13 +162,19 @@ ils ne constituent pas une garantie de résultat.</p>
 </section>
 </Shell>}
 
-export function AccompanimentQualification(){return <Shell eyebrow="Accompagnement Prépa · qualification" title="Décrire votre situation" intro="Cette qualification écrite permet d’examiner si l’accompagnement est adapté.">
+export function OrientationPage(){return <Shell eyebrow="Échange d’orientation" title="Réserver un échange d’orientation" intro="Un échange téléphonique de 10 minutes pour faire le point sur votre situation et vous orienter vers la suite la plus adaptée." action={<Button variant="hero" href={ORIENTATION_BOOKING_URL} unavailableText="La réservation en ligne sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Choisir mon créneau d’échange</Button>}>
+<section className="mt-8 grid gap-5 md:grid-cols-2">
+<Card variant="blue" title="À quoi sert cet échange ?">Cet échange permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement proposé peut correspondre à ses besoins.</Card>
+<Card variant="yellow" title="Pour qui ?"><ul className="space-y-3"><li><strong>Terminale :</strong> vous visez une CPGE scientifique.</li><li><strong>CPGE scientifique :</strong> vous êtes en première ou deuxième année.</li><li><strong>Parent et étudiant :</strong> idéalement disponibles ensemble.</li></ul></Card>
+</section>
 <section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
-<p className="leading-7 text-slate-700">Une demande ne garantit ni admission, ni place, ni créneau. Les profils adaptés reçoivent par e-mail un lien privé de réservation pour un diagnostic avec l’étudiant et au moins un parent.</p>
-<div className="mt-7">
-<Button href={ACCOMPANIMENT_FORM_URL} unavailableText="Le questionnaire de qualification sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Ouvrir le questionnaire</Button>
-</div>
-<p className="mt-6 text-sm">Une question ? <a href="/contact" className="underline">Contactez Samuel</a>.</p>
+<h2 className="text-2xl font-bold">Ce que cet échange n’est pas</h2>
+<p className="mt-3 leading-7 text-slate-700">Il ne s’agit pas d’un cours ni d’un diagnostic complet. Si un accompagnement paraît pertinent, la suite éventuelle sera expliquée à l’issue de cet échange.</p>
+</section>
+<section className="mt-8 rounded-3xl border border-[#F6B632] bg-[#FFF9EA] p-7 text-center">
+<p className="font-semibold leading-7 text-[#1E3A5F]">La réservation de cet échange est nécessaire pour qu’une demande d’accompagnement puisse être étudiée.</p>
+<div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-semibold"><a href="/accompagnement" className="text-blue-700 underline underline-offset-4">Découvrir l’Accompagnement</a><a href="/stage" className="text-blue-700 underline underline-offset-4">Découvrir le Stage Choc Prépa</a><a href="/contact" className="text-blue-700 underline underline-offset-4">Nous contacter</a></div>
+<div className="mt-7 flex justify-center"><Button href={ORIENTATION_BOOKING_URL} unavailableText="La réservation en ligne sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Choisir mon créneau d’échange</Button></div>
 </section>
 </Shell>}
 
