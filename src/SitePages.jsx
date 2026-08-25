@@ -100,8 +100,7 @@ export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement Pr�
 </section>
 <section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
 <h2 className="text-2xl font-bold">Comment commencer ?</h2>
-<p className="mt-3 leading-7 text-slate-700">La qualification écrite est obligatoire avant tout diagnostic. Si la situation est adaptée, un diagnostic est organisé avec l’étudiant et au moins un parent ;
-le lien de réservation est envoyé uniquement par e-mail.</p>
+<p className="mt-3 leading-7 text-slate-700">Réservez un échange d’orientation de 10 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p>
 </section>
 <section className="mt-8 grid gap-5 md:grid-cols-2">
 <Card variant="blue" title="Axes de travail">
@@ -122,7 +121,7 @@ ils ne constituent pas une garantie de résultat.</p>
 <Plaquette url={ACCOMPANIMENT_BROCHURE_URL} compact />
 <section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
 <h2 className="text-2xl font-bold">Déroulement de l’entrée</h2>
-<div className="mt-6 grid gap-4 sm:grid-cols-2">{["Qualification écrite","Analyse de la demande","Lien privé envoyé par e-mail","Diagnostic avec l’étudiant et un parent"].map((step,index)=>
+<div className="mt-6 grid gap-4 sm:grid-cols-2">{["Réservation d’un échange d’orientation","Échange téléphonique de 10 minutes","Analyse de la situation","Suite éventuelle expliquée"].map((step,index)=>
 <div key={step} className="flex gap-3 rounded-2xl bg-[#F8FAFC] p-4">
 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">{index+1}</span>
 <p className="font-semibold">{step}</p>
@@ -130,7 +129,7 @@ ils ne constituent pas une garantie de résultat.</p>
 </section>
 <section className="mt-8">
 <h2 className="text-2xl font-bold">FAQ Accompagnement</h2>
-<div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux lycéens de Terminale visant une CPGE scientifique et aux étudiants de première ou deuxième année de CPGE scientifique.'],['Pourquoi faut-il remplir un questionnaire ?','Il permet d’analyser la situation avant de proposer un diagnostic.'],['Le questionnaire garantit-il une place ?','Non : il ne garantit ni admission, ni place, ni créneau.'],['Comment se déroule le diagnostic ?','Il réunit l’étudiant et au moins un parent après qualification écrite.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=>
+<div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux lycéens de Terminale visant une CPGE scientifique et aux étudiants de première ou deuxième année de CPGE scientifique.'],['Pourquoi réserver un échange d’orientation ?','Il permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement peut correspondre à ses besoins.'],['L’échange garantit-il une place ?','Non : il ne garantit ni admission, ni place, ni créneau.'],['Comment se déroule la suite ?','Si l’accompagnement paraît pertinent, la suite éventuelle est expliquée à l’issue de l’échange.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=>
 <details key={q} className="py-4">
 <summary className="cursor-pointer font-semibold">{q}</summary>
 <p className="mt-2 text-slate-600">{a}</p>
@@ -173,7 +172,7 @@ export function OrientationPage(){return <Shell eyebrow="Échange d’orientatio
 </section>
 <section className="mt-8 rounded-3xl border border-[#F6B632] bg-[#FFF9EA] p-7 text-center">
 <p className="font-semibold leading-7 text-[#1E3A5F]">La réservation de cet échange est nécessaire pour qu’une demande d’accompagnement puisse être étudiée.</p>
-<div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-semibold"><a href="/accompagnement" className="text-blue-700 underline underline-offset-4">Découvrir l’Accompagnement</a><a href="/stage" className="text-blue-700 underline underline-offset-4">Découvrir le Stage Choc Prépa</a><a href="/contact" className="text-blue-700 underline underline-offset-4">Nous contacter</a></div>
+<div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-semibold"><a href="/accompagnement" className="text-blue-700 underline underline-offset-4">Découvrir l’Accompagnement</a><a href="/contact" className="text-blue-700 underline underline-offset-4">Nous contacter</a></div>
 <div className="mt-7 flex justify-center"><Button href={ORIENTATION_BOOKING_URL} unavailableText="La réservation en ligne sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Choisir mon créneau d’échange</Button></div>
 </section>
 </Shell>}
@@ -193,7 +192,6 @@ export default function ContactPage(){const [status,setStatus]=useState('');cons
 </label>
 </div>
 <label className="mt-5 block">Objet<select required name="subject" className="mt-2 w-full rounded-xl border border-slate-300 p-3">
-<option value="Stage">Stage</option>
 <option value="Accompagnement">Accompagnement</option>
 <option value="Autre">Autre</option>
 </select>
