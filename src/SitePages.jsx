@@ -22,10 +22,10 @@ return href?<a href={href} className={styles}>{children} <span className="ml-2">
 };
 const cardStyles={default:"border-slate-200 bg-white text-[#1E3A5F]",blue:"border-blue-200 bg-blue-50 text-[#1E3A5F]",yellow:"border-[#F6B632]/60 bg-[#FFF9EA] text-[#1E3A5F]",navy:"border-[#1E3A5F] bg-[#1E3A5F] text-white"};
 const Card=({title,children,variant="default"})=>
-<div className={`rounded-2xl border p-6 shadow-sm ${cardStyles[variant]}`}>
+<div className={`min-w-0 w-full overflow-hidden rounded-2xl border p-6 shadow-sm ${cardStyles[variant]}`}>
 <span className="mb-3 block h-1 w-8 rounded bg-[#F6B632]"/>
 <h2 className="text-lg font-bold">{title}</h2>
-<div className={`mt-3 leading-7 ${variant==="navy"?"text-slate-100":"text-slate-600"}`}>{children}</div>
+<div className={`mt-3 min-w-0 break-words leading-7 ${variant==="navy"?"text-slate-100":"text-slate-600"}`}>{children}</div>
 </div>;
 export function StageLanding(){return <Shell eyebrow="Stage Choc Prépa" title="Préparer son entrée en prépa scientifique" intro="Un stage intensif pour aborder la transition entre le lycée et la CPGE scientifique avec des repères concrets." action={<>
 <Button variant="hero" href={STAGE_FORM_URL} unavailableText="Les inscriptions au Stage seront disponibles prochainement. Pour toute question, contactez-nous par e-mail.">Vérifier mon éligibilité et m’inscrire</Button>
