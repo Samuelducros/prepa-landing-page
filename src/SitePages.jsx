@@ -22,7 +22,7 @@ return href?<a href={href} className={styles}>{children} <span className="ml-2">
 };
 const cardStyles={default:"border-slate-200 bg-white text-[#1E3A5F]",blue:"border-blue-200 bg-blue-50 text-[#1E3A5F]",yellow:"border-[#F6B632]/60 bg-[#FFF9EA] text-[#1E3A5F]",navy:"border-[#1E3A5F] bg-[#1E3A5F] text-white"};
 const Card=({title,children,variant="default"})=>
-<div className={`min-w-0 max-w-full rounded-2xl border p-6 shadow-sm ${cardStyles[variant]}`}>
+<div className={`content-card min-w-0 max-w-full rounded-2xl border p-6 shadow-sm ${cardStyles[variant]}`}>
 <span className="mb-3 block h-1 w-8 rounded bg-[#F6B632]"/>
 <h2 className="min-w-0 break-words text-lg font-bold">{title}</h2>
 <div className={`mt-3 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] ${variant==="navy"?"text-slate-100":"text-slate-600"}`}>{children}</div>
@@ -107,7 +107,7 @@ export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement CPG
 </section>
 <section className="mt-12">
 <div className="mb-5 max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Pendant le cycle</p><h2 className="mt-2 text-3xl font-bold">Un cadre clair pour avancer durablement</h2></div>
-<div className="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2">
+<div className="accompaniment-cycle-grid grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2">
 <Card variant="blue" title="Axes de travail">
 <ul>
 <li>• organisation et priorisation ;</li>

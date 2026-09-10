@@ -35,6 +35,22 @@ body {
   text-wrap: balance;
 }
 
+@media (max-width: 639px) {
+  .accompaniment-cycle-grid > .content-card {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .accompaniment-cycle-grid .content-card,
+  .accompaniment-cycle-grid .content-card * {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
+
 .legal-content a {
   color: #2563eb;
   font-weight: 600;
