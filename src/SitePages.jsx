@@ -89,20 +89,25 @@ la place n’est confirmée qu’après paiement réussi et contrôle de capacit
 </section>
 </Shell>}
 
-export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement Prépa" title="Un accompagnement méthodologique pendant l’année" intro="Un accompagnement en petit groupe avec un suivi ciblé de chaque étudiant." action={<>
+export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement CPGE en groupe" title="12 semaines pour progresser avec méthode" intro="Douze séances collectives en ligne de deux heures, en groupe de trois étudiants maximum, pour travailler méthode, organisation, mathématiques et confiance." action={<>
 <Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button>
 <p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 10 minutes pour faire le point sur votre situation.</p>
 </>}>
-<section className="mt-8 grid gap-5 md:grid-cols-3">
-<Card variant="blue" title="Public">Terminale visant une CPGE scientifique, première ou deuxième année de CPGE scientifique.</Card>
-<Card variant="yellow" title="Format">12 semaines, deux heures par semaine, créneau hebdomadaire fixe, groupes de trois étudiants maximum.</Card>
-<Card title="Travail">Méthodes, organisation, efficacité, confiance, stress et mathématiques. Flash coaching facultatif.</Card>
+<section className="mt-8">
+<p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">L’essentiel</p>
+<div className="grid gap-5 md:grid-cols-3">
+<Card variant="blue" title="Pour qui ?">Terminale visant une CPGE scientifique, première ou deuxième année de CPGE scientifique.</Card>
+<Card variant="yellow" title="Le cycle">12 semaines, 12 séances collectives en ligne de 2 h, groupes de trois étudiants maximum et créneau hebdomadaire fixe.</Card>
+<Card variant="navy" title="Ce qui est travaillé">Méthodes, organisation, efficacité, confiance, stress et mathématiques. Une réunion collective hebdomadaire de flash coaching de 30 minutes, commune à tous les étudiants, est incluse mais facultative.</Card>
+</div>
 </section>
-<section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
-<h2 className="text-2xl font-bold">Comment commencer ?</h2>
-<p className="mt-3 leading-7 text-slate-700">Réservez un échange d’orientation de 10 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p>
+<section className="mt-10 grid overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-sm md:grid-cols-[0.8fr_1.2fr]">
+<div className="bg-[#1E3A5F] p-7 text-white sm:p-9"><span className="block h-1 w-10 rounded bg-[#F6B632]"/><p className="mt-5 text-sm font-bold uppercase tracking-[0.14em] text-[#F6B632]">Première étape</p><p className="mt-3 text-2xl font-bold leading-tight">Faire le point sur votre situation.</p></div>
+<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Comment commencer ?</h2><p className="mt-3 max-w-2xl leading-7 text-slate-700">Réservez un échange d’orientation de 10 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p><a href="/orientation" className="mt-6 inline-flex rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#16304f] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2">Réserver un échange d’orientation <span className="ml-2">→</span></a></div>
 </section>
-<section className="mt-8 grid gap-5 md:grid-cols-2">
+<section className="mt-12">
+<div className="mb-5 max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Pendant le cycle</p><h2 className="mt-2 text-3xl font-bold">Un cadre clair pour avancer durablement</h2></div>
+<div className="grid gap-5 md:grid-cols-2">
 <Card variant="blue" title="Axes de travail">
 <ul>
 <li>• organisation et priorisation ;</li>
@@ -114,22 +119,27 @@ export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement Pr�
 <p className="mt-3">Ces axes guident le travail ;
 ils ne constituent pas une garantie de résultat.</p>
 </Card>
-<Card variant="yellow" title="Fonctionnement">12 semaines, une séance collective de deux heures par semaine, trois étudiants maximum et un créneau hebdomadaire fixe. Le groupe permet un suivi ciblé de chaque étudiant. Deux créneaux collectifs facultatifs de flash coaching de 30 minutes par semaine complètent le parcours.</Card>
+<Card variant="yellow" title="Fonctionnement">Le cycle comprend 12 séances collectives en ligne de 2 h, avec trois étudiants maximum par groupe et un créneau hebdomadaire fixe. Une seule réunion collective hebdomadaire de flash coaching de 30 minutes, commune à tous les étudiants de tous les groupes, est incluse mais facultative. Elle permet des questions et déblocages ponctuels, sans constituer une séance individuelle ni garantir le traitement de chaque question.</Card>
 <Card variant="default" title="Engagement attendu">Une demande réelle de l’étudiant, une participation active, la volonté de tester les méthodes proposées et l’acceptation du fonctionnement collectif comme du créneau fixe.</Card>
 <Card variant="navy" title="Limites">Obligation de moyens, sans garantie de résultat : ce n’est ni une solution miracle ni un accompagnement individuel permanent. L’admission dépend de l’adéquation du profil et de la capacité des groupes.</Card>
+</div>
+</section>
+<section className="mt-10 overflow-hidden rounded-3xl border border-[#F6B632] bg-[#FFF9EA] shadow-sm md:grid md:grid-cols-[0.8fr_1.2fr]">
+<div className="bg-[#F6B632] p-7 text-[#1E3A5F] sm:p-9"><p className="text-sm font-bold uppercase tracking-[0.14em]">Tarif du cycle</p><p className="mt-3 text-4xl font-bold">1 110 €</p><p className="mt-2 font-semibold">TTC</p></div>
+<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Prix et modalités de règlement</h2><p className="mt-3 leading-7 text-slate-700">Règlement comptant ou en 3 échéances mensuelles de 370 € par virement bancaire, sans frais, sans intérêt, sans abonnement ni reconduction automatique.</p><p className="mt-3 text-sm leading-6 text-slate-600">TVA non applicable, article 293 B du CGI.</p></div>
 </section>
 <Plaquette url={ACCOMPANIMENT_BROCHURE_URL} compact />
-<section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
-<h2 className="text-2xl font-bold">Déroulement de l’entrée</h2>
-<div className="mt-6 grid gap-4 sm:grid-cols-2">{["Réservation d’un échange d’orientation","Échange téléphonique de 10 minutes","Analyse de la situation","Suite éventuelle expliquée"].map((step,index)=>
-<div key={step} className="flex gap-3 rounded-2xl bg-[#F8FAFC] p-4">
-<span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">{index+1}</span>
-<p className="font-semibold">{step}</p>
+<section className="mt-10 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9">
+<p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Le parcours</p><h2 className="mt-2 text-3xl font-bold">Déroulement de l’entrée</h2>
+<div className="mt-7 grid gap-4 sm:grid-cols-2">{["Réservation d’un échange d’orientation","Échange et diagnostic","Contrat individualisé et annexe","Virement puis confirmation de place"].map((step,index)=>
+<div key={step} className="flex gap-4 rounded-2xl border border-slate-100 bg-[#F8FAFC] p-5">
+<span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">{index+1}</span>
+<p className="self-center font-semibold text-[#1E3A5F]">{step}</p>
 </div>)}</div>
 </section>
 <section className="mt-8">
 <h2 className="text-2xl font-bold">FAQ Accompagnement</h2>
-<div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux lycéens de Terminale visant une CPGE scientifique et aux étudiants de première ou deuxième année de CPGE scientifique.'],['Pourquoi réserver un échange d’orientation ?','Il permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement peut correspondre à ses besoins.'],['L’échange garantit-il une place ?','Non : il ne garantit ni admission, ni place, ni créneau.'],['Comment se déroule la suite ?','Si l’accompagnement paraît pertinent, la suite éventuelle est expliquée à l’issue de l’échange.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=>
+<div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux lycéens de Terminale visant une CPGE scientifique et aux étudiants de première ou deuxième année de CPGE scientifique.'],['Pourquoi réserver un échange d’orientation ?','Il permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement peut correspondre à ses besoins.'],['L’échange garantit-il une place ?','Non : une place peut être pré-réservée après accord sur un créneau, jusqu’à la date écrite dans le contrat. Elle est confirmée après acceptation du contrat, première échéance reçue et validation finale du groupe.'],['Comment se déroule la suite ?','Après l’échange et le diagnostic, un contrat individualisé et son annexe sont proposés si l’accompagnement est adapté. La confirmation de place est ensuite envoyée par e-mail après virement et validation finale du groupe.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=>
 <details key={q} className="py-4">
 <summary className="cursor-pointer font-semibold">{q}</summary>
 <p className="mt-2 text-slate-600">{a}</p>
@@ -168,7 +178,7 @@ export function OrientationPage(){return <Shell eyebrow="Échange d’orientatio
 </section>
 <section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
 <h2 className="text-2xl font-bold">Ce que cet échange n’est pas</h2>
-<p className="mt-3 leading-7 text-slate-700">Il ne s’agit pas d’un cours ni d’un diagnostic complet. Si un accompagnement paraît pertinent, la suite éventuelle sera expliquée à l’issue de cet échange.</p>
+<p className="mt-3 leading-7 text-slate-700">Il ne s’agit pas d’un cours ni d’un diagnostic complet. Si l’accompagnement paraît pertinent, le diagnostic, le contrat individualisé et son annexe seront expliqués à l’issue de cet échange.</p>
 </section>
 <section className="mt-8 rounded-3xl border border-[#F6B632] bg-[#FFF9EA] p-7 text-center">
 <p className="font-semibold leading-7 text-[#1E3A5F]">La réservation de cet échange est nécessaire pour qu’une demande d’accompagnement puisse être étudiée.</p>
@@ -179,7 +189,7 @@ export function OrientationPage(){return <Shell eyebrow="Échange d’orientatio
 
 export function StagePaymentReceived(){return <Shell eyebrow="Stage Choc Prépa" title="Votre paiement a bien été reçu." intro="Nous terminons maintenant la vérification de votre inscription. Vous recevrez un e-mail de confirmation avec les prochaines étapes. Pensez à consulter votre dossier de courriers indésirables."/>}
 
-export function AccompanimentRequestReceived(){return <Shell eyebrow="Accompagnement Prépa" title="Votre demande a bien été transmise." intro="Nous allons vérifier si l’accompagnement correspond à la situation de l’étudiant. Si le profil est adapté, vous recevrez par e-mail un lien privé pour réserver le diagnostic. Pensez à consulter votre dossier de courriers indésirables."/>}
+export function AccompanimentRequestReceived(){return <Shell eyebrow="Accompagnement CPGE" title="Votre demande a bien été transmise." intro="Nous allons vérifier si l’accompagnement correspond à la situation de l’étudiant. Si le profil est adapté, nous vous expliquerons par e-mail les prochaines étapes, dont le diagnostic, le contrat individualisé et son annexe. Pensez à consulter votre dossier de courriers indésirables."/>}
 
 export function ContactConfirmation(){return <Shell eyebrow="Contact" title="Votre message a bien été envoyé." intro="Nous vous répondrons directement par e-mail. Pensez à consulter votre dossier de courriers indésirables."/>}
 
