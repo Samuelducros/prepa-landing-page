@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Plaquette from './components/Plaquette';
-import { STAGE_FORM_URL, ORIENTATION_BOOKING_URL, CONTACT_ENDPOINT, ACCOMPANIMENT_BROCHURE_URL } from './siteConfig';
+import { STAGE_FORM_URL, ORIENTATION_ENDPOINT, ORIENTATION_TURNSTILE_SITE_KEY, CONTACT_ENDPOINT, ACCOMPANIMENT_BROCHURE_URL } from './siteConfig';
 const Email=()=> <a className="font-semibold text-blue-700 underline" href="mailto:contact@samuel-ducros.fr">contact@samuel-ducros.fr</a>;
 const Shell=({eyebrow,title,intro,action,children})=>
 <main className="min-h-screen bg-[#F8FAFC] px-5 py-10 text-[#1E3A5F] sm:px-8">
@@ -91,7 +91,7 @@ la place n’est confirmée qu’après paiement réussi et contrôle de capacit
 
 export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement CPGE en groupe" title="12 semaines pour progresser avec méthode" intro="Douze séances collectives en ligne de deux heures, en groupe de trois étudiants maximum, pour travailler méthode, organisation, mathématiques et confiance." action={<>
 <Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button>
-<p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 10 minutes pour faire le point sur votre situation.</p>
+<p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 5 minutes pour faire le point sur votre situation.</p>
 </>}>
 <section className="mt-8">
 <p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">L’essentiel</p>
@@ -103,7 +103,7 @@ export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement CPG
 </section>
 <section className="mt-10 grid overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-sm md:grid-cols-[0.8fr_1.2fr]">
 <div className="bg-[#1E3A5F] p-7 text-white sm:p-9"><span className="block h-1 w-10 rounded bg-[#F6B632]"/><p className="mt-5 text-sm font-bold uppercase tracking-[0.14em] text-[#F6B632]">Première étape</p><p className="mt-3 text-2xl font-bold leading-tight">Faire le point sur votre situation.</p></div>
-<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Comment commencer ?</h2><p className="mt-3 max-w-2xl leading-7 text-slate-700">Réservez un échange d’orientation de 10 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p><a href="/orientation" className="mt-6 inline-flex rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#16304f] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2">Réserver un échange d’orientation <span className="ml-2">→</span></a></div>
+<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Comment commencer ?</h2><p className="mt-3 max-w-2xl leading-7 text-slate-700">Réservez un échange d’orientation de 5 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p><a href="/orientation" className="mt-6 inline-flex rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#16304f] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2">Réserver un échange d’orientation <span className="ml-2">→</span></a></div>
 </section>
 <section className="mt-12">
 <div className="mb-5 max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Pendant le cycle</p><h2 className="mt-2 text-3xl font-bold">Un cadre clair pour avancer durablement</h2></div>
@@ -150,7 +150,7 @@ ils ne constituent pas une garantie de résultat.</p>
   </h2>
 
   <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-700">
-    Réservez un échange téléphonique de 10 minutes pour faire le point sur sa situation
+    Réservez un échange téléphonique de 5 minutes pour faire le point sur sa situation
     et vous orienter vers la suite la plus adaptée.
   </p>
 
@@ -171,22 +171,115 @@ ils ne constituent pas une garantie de résultat.</p>
 </section>
 </Shell>}
 
-export function OrientationPage(){return <Shell eyebrow="Échange d’orientation" title="Réserver un échange d’orientation" intro="Un échange téléphonique de 10 minutes pour faire le point sur votre situation et vous orienter vers la suite la plus adaptée." action={<Button variant="hero" href={ORIENTATION_BOOKING_URL} unavailableText="La réservation en ligne sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Choisir mon créneau d’échange</Button>}>
-<section className="mt-8 grid gap-5 md:grid-cols-2">
-<Card variant="blue" title="À quoi sert cet échange ?">Cet échange permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement proposé peut correspondre à ses besoins.</Card>
-<Card variant="yellow" title="Pour qui ?"><ul className="space-y-3"><li><strong>Terminale :</strong> vous visez une CPGE scientifique.</li><li><strong>CPGE scientifique :</strong> vous êtes en première ou deuxième année.</li><li><strong>Parent et étudiant :</strong> idéalement disponibles ensemble.</li></ul></Card>
-</section>
-<section className="mt-8 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
-<h2 className="text-2xl font-bold">Ce que cet échange n’est pas</h2>
-<p className="mt-3 leading-7 text-slate-700">Il ne s’agit pas d’un cours ni d’un diagnostic complet. Si l’accompagnement paraît pertinent, le diagnostic, le contrat individualisé et son annexe seront expliqués à l’issue de cet échange.</p>
-</section>
-<section className="mt-8 rounded-3xl border border-[#F6B632] bg-[#FFF9EA] p-7 text-center">
-<p className="font-semibold leading-7 text-[#1E3A5F]">La réservation de cet échange est nécessaire pour qu’une demande d’accompagnement puisse être étudiée.</p>
-<div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-semibold"><a href="/accompagnement" className="text-blue-700 underline underline-offset-4">Découvrir l’Accompagnement</a><a href="/contact" className="text-blue-700 underline underline-offset-4">Nous contacter</a></div>
-<div className="mt-7 flex justify-center"><Button href={ORIENTATION_BOOKING_URL} unavailableText="La réservation en ligne sera disponible prochainement. Pour toute question, contactez-nous par e-mail.">Choisir mon créneau d’échange</Button></div>
-</section>
-</Shell>}
+const OrientationQuestion=({children})=><div id="orientation-question" className="h-full min-h-0 overflow-y-auto rounded-3xl bg-white p-7 shadow-[0_20px_55px_rgba(30,58,95,0.14)] ring-1 ring-slate-200 sm:p-10">{children}</div>;
+const OrientationShell=({step,totalSteps,children})=><main className="h-[100dvh] overflow-hidden bg-[radial-gradient(circle_at_top_left,_#e0edff,_#f8fafc_52%,_#fff9ea)] px-5 py-5 text-[#1E3A5F] sm:px-8 sm:py-7"><div className="mx-auto flex h-full max-w-2xl flex-col"><header className="flex shrink-0 items-center justify-between gap-4"><a href="/" className="font-bold text-[#1E3A5F]">Samuel Ducros<span className="hidden text-sm font-medium text-slate-500 sm:inline"> · Accompagnement CPGE</span></a><a href="/" className="text-sm font-semibold text-blue-700 underline underline-offset-4">Quitter</a></header><div className="flex min-h-0 flex-1 flex-col justify-center py-5"><section className="shrink-0 rounded-2xl border border-blue-100 bg-white/80 p-5 shadow-sm"><div className="flex items-center justify-between gap-4 text-sm font-semibold text-[#1E3A5F]"><span>Question {step} sur {totalSteps}</span><span>{Math.round((step/totalSteps)*100)} %</span></div><div className="mt-3 h-2 overflow-hidden rounded-full bg-blue-100"><div className="h-full rounded-full bg-[#3B82F6] transition-all duration-500" style={{width:`${(step/totalSteps)*100}%`}} /></div></section><form autoComplete="off" className="min-h-0 flex-1 pt-4">{children}</form></div></div></main>;
 
+const ORIENTATION_SLOTS=[
+  'Lundi · 20 h – 20 h 30',
+  'Mardi · 19 h – 19 h 30',
+  'Mercredi · 12 h 30 – 13 h',
+  'Samedi · 18 h – 18 h 30',
+  'Dimanche · 11 h 30 – 12 h'
+];
+
+const TurnstileWidget=({onToken})=>{
+  const containerRef=useRef(null);
+  useEffect(()=>{
+    let cancelled=false;
+    const render=()=>{
+      if(cancelled||!containerRef.current||!window.turnstile)return;
+      window.turnstile.render(containerRef.current,{
+        sitekey:ORIENTATION_TURNSTILE_SITE_KEY,
+        action:'orientation_request',
+        theme:'light',
+        appearance:'interaction-only',
+        callback:onToken,
+        'expired-callback':()=>onToken(''),
+        'error-callback':()=>onToken('')
+      });
+    };
+    const existing=document.querySelector('script[data-turnstile-script]');
+    if(existing){
+      if(window.turnstile)render();
+      else existing.addEventListener('load',render,{once:true});
+    }else{
+      const script=document.createElement('script');
+      script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async=true;
+      script.defer=true;
+      script.dataset.turnstileScript='true';
+      script.addEventListener('load',render,{once:true});
+      document.head.appendChild(script);
+    }
+    return()=>{cancelled=true;};
+  },[onToken]);
+  return <div ref={containerRef} aria-label="Vérification anti-spam"/>;
+};
+
+const TextOrientationQuestion=({eyebrow,title,label,name,type='text',value,onChange,onNext,onBack,status,placeholder,inputMode})=><OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">{eyebrow}</p><h2 className="mt-2 text-3xl font-bold">{title}</h2><label className="mt-7 block font-semibold text-slate-700">{label}<input autoFocus name={name} type={type} value={value} onChange={e=>onChange(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();onNext();}}} className="mt-2 w-full rounded-xl border border-slate-300 p-4 text-lg font-normal text-slate-900" autoComplete="off" inputMode={inputMode} placeholder={placeholder} /></label><div className="mt-6 flex gap-3">{onBack&&<button type="button" onClick={onBack} className="rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button>}<button type="button" onClick={onNext} className="rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white">Continuer <span className="ml-2">→</span></button></div>{status&&<p className="mt-4 text-sm text-red-700">{status}</p>}</OrientationQuestion>;
+
+export function OrientationPage(){
+const [step,setStep]=useState(1);
+const [firstName,setFirstName]=useState('');
+const [lastName,setLastName]=useState('');
+const [email,setEmail]=useState('');
+const [phone,setPhone]=useState('');
+const [level,setLevel]=useState('');
+const [otherTrack,setOtherTrack]=useState('');
+const [slots,setSlots]=useState([]);
+const [availability,setAvailability]=useState('');
+const [status,setStatus]=useState('');
+const [sending,setSending]=useState(false);
+const [turnstileToken,setTurnstileToken]=useState('');
+const [turnstileKey,setTurnstileKey]=useState(0);
+const direct=Boolean(ORIENTATION_ENDPOINT);
+const totalSteps=6;
+const isPlausiblePhone=value=>{
+  const trimmed=value.trim();
+  const digits=trimmed.replace(/\D/g,'');
+  return /^\+?[0-9\s().-]+$/.test(trimmed)&&digits.length>=7&&digits.length<=15;
+};
+const next=()=>{
+  const values={1:firstName.trim(),2:lastName.trim(),3:email.trim(),4:phone.trim()};
+  if(!values[step]){setStatus('Complétez cette réponse pour continuer.');return;}
+  if(step===4&&!isPlausiblePhone(phone)){setStatus('Indiquez un numéro de téléphone valide.');return;}
+  setStatus('');setStep(current=>Math.min(current+1,totalSteps));
+};
+const chooseLevel=value=>{
+  setLevel(value);setStatus('');
+  if(value!=='Autre')setTimeout(()=>setStep(6),220);
+};
+const nextOther=()=>{
+  if(!otherTrack.trim()){setStatus('Indiquez au moins la filière ou la formation.');return;}
+  setStatus('');setStep(6);
+};
+const toggleSlot=slot=>setSlots(current=>current.includes(slot)?current.filter(value=>value!==slot):[...current,slot]);
+const submit=async e=>{
+  e.preventDefault();
+  if(!slots.length&&!availability.trim()){setStatus('Choisissez au moins un créneau ou indiquez votre disponibilité.');return;}
+  if(!direct){setStatus('Le questionnaire est prêt, mais son envoi est encore en cours de configuration.');return;}
+  if(!turnstileToken){setStatus('La vérification anti-spam est en cours. Patientez un instant, puis réessayez.');return;}
+  const query=new URLSearchParams(window.location.search);
+  const payload={kind:'orientation_request',firstName,lastName,fullName:[firstName,lastName].filter(Boolean).join(' '),email,phone,level,otherTrack,preferredSlots:slots,availability,sourceUrl:window.location.href,trackingSource:query.get('utm_source')||'Direct / non identifié',trackingMedium:query.get('utm_medium')||'',trackingCampaign:query.get('utm_campaign')||'',trackingAdSet:query.get('utm_term')||'',trackingAd:query.get('utm_content')||'',referrer:document.referrer||'',turnstileToken,submittedAt:new Date().toISOString()};
+  setSending(true);setStatus('');
+  try{
+    const response=await fetch(ORIENTATION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!response.ok)throw new Error();
+    window.location.assign('/orientation/demande-recue');
+  }catch{setTurnstileToken('');setTurnstileKey(current=>current+1);setStatus('L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');}
+  finally{setSending(false);}
+};
+let content;
+if(step===1) content=<TextOrientationQuestion eyebrow="Pour commencer" title="Quel est votre prénom ?" label="Prénom" name="orientation_first_name" value={firstName} onChange={setFirstName} onNext={next} status={status} />;
+if(step===2) content=<TextOrientationQuestion eyebrow="Question 2" title="Et votre nom ?" label="Nom" name="orientation_last_name" value={lastName} onChange={setLastName} onNext={next} onBack={()=>setStep(1)} status={status} />;
+if(step===3) content=<TextOrientationQuestion eyebrow="Question 3" title="Quelle est votre adresse e-mail ?" label="Adresse e-mail" name="orientation_email" type="email" value={email} onChange={setEmail} onNext={next} onBack={()=>setStep(2)} status={status} />;
+if(step===4) content=<TextOrientationQuestion eyebrow="Question 4" title="À quel numéro peut-on vous joindre ?" label="Numéro de téléphone" name="orientation_phone" type="tel" value={phone} onChange={setPhone} onNext={next} onBack={()=>setStep(3)} status={status} inputMode="tel" placeholder="06 12 34 56 78" />;
+if(step===5) content=<OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">Question 5</p><h2 className="mt-2 text-3xl font-bold">Quelle est la situation de l’étudiant ?</h2><p className="mt-3 leading-7 text-slate-600">Choisissez la réponse la plus proche.</p><div className="mt-7 grid gap-3">{[['Terminale - projet CPGE scientifique','Terminale — projet de CPGE scientifique'],['1re année de CPGE scientifique','Première année de CPGE scientifique'],['2e année de CPGE scientifique','Deuxième année de CPGE scientifique'],['Autre','Autre situation']].map(([value,label])=><button type="button" key={value} onClick={()=>chooseLevel(value)} className={`rounded-2xl border p-5 text-left font-bold text-[#1E3A5F] transition ${level===value?'border-[#1E3A5F] bg-blue-50':'border-slate-200 hover:border-[#3B82F6] hover:bg-blue-50'}`}>{label}<span className="float-right">→</span></button>)}</div>{level==='Autre'&&<div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50/60 p-5"><label className="block font-semibold text-slate-700">Préciser<input autoFocus name="orientation_other" value={otherTrack} onChange={e=>setOtherTrack(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();nextOther();}}} className="mt-2 w-full rounded-xl border border-slate-300 bg-white p-4 text-lg font-normal text-slate-900" autoComplete="off" placeholder="Par exemple : prépa intégrée, BUT, licence…" /></label><button type="button" onClick={nextOther} className="mt-5 rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white">Continuer <span className="ml-2">→</span></button></div>}<button type="button" onClick={()=>setStep(4)} className="mt-6 rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button>{status&&<p className="mt-4 text-sm text-red-700">{status}</p>}</OrientationQuestion>;
+if(step===6) content=<OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">Dernière question</p><h2 className="mt-2 text-3xl font-bold">Quels créneaux vous conviendraient ?</h2><p className="mt-3 leading-7 text-slate-600">Cochez un ou plusieurs créneaux possibles. Je vous appellerai dans l’une des disponibilités indiquées.</p><div className="mt-7 grid gap-3">{ORIENTATION_SLOTS.map(slot=><label key={slot} className={`cursor-pointer rounded-2xl border p-5 transition ${slots.includes(slot)?'border-[#1E3A5F] bg-blue-50':'border-slate-200 hover:border-blue-300'}`}><input type="checkbox" checked={slots.includes(slot)} onChange={()=>toggleSlot(slot)} className="mr-3" /><span className="font-bold text-[#1E3A5F]">{slot}</span></label>)}</div><label className="mt-5 block rounded-2xl border border-slate-200 p-5 font-semibold text-[#1E3A5F]">Aucun de ces créneaux ne convient<textarea value={availability} onChange={e=>setAvailability(e.target.value)} rows="3" placeholder="Indiquez simplement vos disponibilités." className="mt-3 w-full rounded-xl border border-slate-300 p-3 font-normal text-slate-900" autoComplete="off" /></label><p className="mt-7 text-sm leading-6 text-slate-600">Vos informations sont utilisées uniquement pour traiter votre demande d’orientation, conformément à la <a href="/confidentialite" className="underline">politique de confidentialité</a>.</p><div className="mt-5"><TurnstileWidget key={turnstileKey} onToken={setTurnstileToken}/></div><div className="mt-6 flex flex-wrap gap-3"><button type="button" onClick={()=>setStep(5)} className="rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button><button type="button" disabled={sending} onClick={submit} className="rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white disabled:opacity-60">{sending?'Envoi en cours…':'Envoyer ma demande'} <span className="ml-2">→</span></button></div>{status&&<p className="mt-4 text-sm text-red-700" role="alert">{status}</p>}</OrientationQuestion>;
+return <OrientationShell step={step} totalSteps={totalSteps}><div key={step} className="orientation-step h-full">{content}</div></OrientationShell>;
+}
+
+export function OrientationRequestReceived(){return <Shell eyebrow="Échange d’orientation" title="Votre demande a bien été transmise." intro="Je vous appellerai depuis le 06 69 26 55 98 dans les disponibilités que vous avez indiquées. Pensez à garder votre téléphone à proximité."/>}
 export function StagePaymentReceived(){return <Shell eyebrow="Stage Choc Prépa" title="Votre paiement a bien été reçu." intro="Nous terminons maintenant la vérification de votre inscription. Vous recevrez un e-mail de confirmation avec les prochaines étapes. Pensez à consulter votre dossier de courriers indésirables."/>}
 
 export function AccompanimentRequestReceived(){return <Shell eyebrow="Accompagnement CPGE" title="Votre demande a bien été transmise." intro="Nous allons vérifier si l’accompagnement correspond à la situation de l’étudiant. Si le profil est adapté, nous vous expliquerons par e-mail les prochaines étapes, dont le diagnostic, le contrat individualisé et son annexe. Pensez à consulter votre dossier de courriers indésirables."/>}

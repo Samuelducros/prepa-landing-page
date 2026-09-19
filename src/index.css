@@ -57,3 +57,12 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+@keyframes orientation-step {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.orientation-step {
+  animation: orientation-step 280ms ease-out both;
+}
