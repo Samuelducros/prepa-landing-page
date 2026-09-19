@@ -61,14 +61,10 @@ const handleOrientationRequest = async (request, env) => {
   return json(200, { ok: true });
 };
 
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+export async function onRequestPost({ request, env }) {
+  return handleOrientationRequest(request, env);
+}
 
-    if (url.pathname === '/api/orientation') {
-      return handleOrientationRequest(request, env);
-    }
-
-    return env.ASSETS.fetch(request);
-  },
-};
+export async function onRequest({ request }) {
+  return json(405, { ok: false, message: "Méthode non autorisée." });
+}
