@@ -264,9 +264,10 @@ const submit=async e=>{
   setSending(true);setStatus('');
   try{
     const response=await fetch(ORIENTATION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(!response.ok)throw new Error();
+    const result=await response.json().catch(()=>null);
+    if(!response.ok)throw new Error(result?.message||'L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');
     window.location.assign('/orientation/demande-recue');
-  }catch{setTurnstileToken('');setTurnstileKey(current=>current+1);setStatus('L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');}
+  }catch(error){setTurnstileToken('');setTurnstileKey(current=>current+1);setStatus(error.message||'L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');}
   finally{setSending(false);}
 };
 let content;
