@@ -219,6 +219,20 @@ const TurnstileWidget=({onToken})=>{
 const TextOrientationQuestion=({eyebrow,title,label,name,type='text',value,onChange,onNext,onBack,status,placeholder,inputMode})=><OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">{eyebrow}</p><h2 className="mt-2 text-3xl font-bold">{title}</h2><label className="mt-7 block font-semibold text-slate-700">{label}<input autoFocus name={name} type={type} value={value} onChange={e=>onChange(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();onNext();}}} className="mt-2 w-full rounded-xl border border-slate-300 p-4 text-lg font-normal text-slate-900" autoComplete="off" inputMode={inputMode} placeholder={placeholder} /></label><div className="mt-6 flex gap-3">{onBack&&<button type="button" onClick={onBack} className="rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button>}<button type="button" onClick={onNext} className="rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white">Continuer <span className="ml-2">→</span></button></div>{status&&<p className="mt-4 text-sm text-red-700">{status}</p>}</OrientationQuestion>;
 
 export function OrientationPage(){
+useEffect(()=>{
+  const scrollY=window.scrollY;
+  const html=document.documentElement;
+  const body=document.body;
+  html.classList.add('orientation-form-open');
+  body.classList.add('orientation-form-open');
+  body.style.top='-'+scrollY+'px';
+  return()=>{
+    html.classList.remove('orientation-form-open');
+    body.classList.remove('orientation-form-open');
+    body.style.top='';
+    window.scrollTo(0,scrollY);
+  };
+},[]);
 const [step,setStep]=useState(0);
 const [firstName,setFirstName]=useState('');
 const [lastName,setLastName]=useState('');

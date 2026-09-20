@@ -66,3 +66,21 @@ body {
 .orientation-step {
   animation: orientation-step 280ms ease-out both;
 }
+
+
+html.orientation-form-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.orientation-form-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#orientation-question {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
