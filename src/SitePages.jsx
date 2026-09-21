@@ -89,86 +89,74 @@ la place n’est confirmée qu’après paiement réussi et contrôle de capacit
 </section>
 </Shell>}
 
-export function AccompanimentLanding(){return <Shell eyebrow="Accompagnement CPGE en groupe" title="12 semaines pour progresser avec méthode" intro="Douze séances collectives en ligne de deux heures, en groupe de trois étudiants maximum, pour travailler méthode, organisation, mathématiques et confiance." action={<>
-<Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button>
-<p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 5 minutes pour faire le point sur votre situation.</p>
-</>}>
-<section className="mt-8">
-<p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">L’essentiel</p>
-<div className="grid gap-5 md:grid-cols-3">
-<Card variant="blue" title="Pour qui ?">Terminale visant une CPGE scientifique, première ou deuxième année de CPGE scientifique.</Card>
-<Card variant="yellow" title="Le cycle">12 semaines, 12 séances collectives en ligne de 2 h, groupes de trois étudiants maximum et créneau hebdomadaire fixe.</Card>
-<Card variant="navy" title="Ce qui est travaillé">Méthodes, organisation, efficacité, confiance, stress et mathématiques. Une réunion collective hebdomadaire de flash coaching de 30 minutes, commune à tous les étudiants, est incluse mais facultative.</Card>
-</div>
+export function AccompanimentLanding(){
+const requestReceived=new URLSearchParams(window.location.search).get("demande")==="recue";
+return <Shell eyebrow="Accompagnement de mathématiques en prépa" title="Retrouver une méthode claire pour avancer en prépa." intro="Un cycle de 12 semaines en petit groupe pour travailler les mathématiques, l’organisation et la confiance face au rythme de la CPGE." action={requestReceived?null:<><Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button><p className="mt-3 text-sm leading-6 text-slate-200">Un échange téléphonique de 5 minutes pour faire le point sur votre situation.</p></>}>
+{requestReceived&&<section className="mt-8 rounded-3xl border border-emerald-200 bg-emerald-50 p-6 text-[#1E3A5F] shadow-sm sm:p-7"><p className="text-sm font-bold uppercase tracking-[0.14em] text-emerald-700">Demande bien transmise</p><h2 className="mt-2 text-2xl font-bold">Merci, votre échange d’orientation est réservé.</h2><p className="mt-3 max-w-3xl leading-7 text-slate-700">Je vous appellerai depuis le 06 69 26 55 98 dans les disponibilités indiquées. En attendant, vous pouvez découvrir le fonctionnement de l’accompagnement ci-dessous.</p></section>}
+<section className="mt-10 grid overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-[0_18px_45px_rgba(30,58,95,0.08)] lg:grid-cols-[0.85fr_1.15fr]">
+  <img src="/Samuel_Ducros_Presentation.jpeg" alt="Samuel Ducros, professeur de mathématiques et accompagnant CPGE" className="h-72 w-full object-cover object-top lg:h-full" />
+  <div className="p-7 sm:p-10">
+    <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Une situation fréquente en prépa</p>
+    <h2 className="mt-3 max-w-2xl text-3xl font-bold leading-tight text-[#1E3A5F]">Votre enfant travaille, mais ne sait plus quoi faire en priorité ?</h2>
+    <p className="mt-5 max-w-2xl leading-7 text-slate-600">Le passage en prépa bouleverse souvent les repères : les méthodes du lycée ne suffisent plus toujours, les exercices s’accumulent et une mauvaise note peut rapidement faire douter.</p>
+    <ul className="mt-7 grid gap-3">
+      <li className="relative rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 pl-14 text-sm leading-6 text-slate-700"><span className="absolute left-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-[#F6B632] text-xs font-black text-[#1E3A5F]">01</span><strong className="block text-[#1E3A5F]">Le travail ne se transforme pas toujours en progrès.</strong> Beaucoup d’efforts, sans savoir quels exercices choisir ni comment les exploiter.</li>
+      <li className="relative rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 pl-14 text-sm leading-6 text-slate-700"><span className="absolute left-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-[#F6B632] text-xs font-black text-[#1E3A5F]">02</span><strong className="block text-[#1E3A5F]">Les mathématiques deviennent un point de blocage.</strong> Les premiers DS peuvent faire perdre confiance et brouiller les priorités.</li>
+      <li className="relative rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 pl-14 text-sm leading-6 text-slate-700"><span className="absolute left-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-[#F6B632] text-xs font-black text-[#1E3A5F]">03</span><strong className="block text-[#1E3A5F]">L’organisation n’est plus tenable.</strong> Il faut retrouver un cadre réaliste, sans ajouter une pression inutile.</li>
+    </ul>
+  </div>
 </section>
-<section className="mt-10 grid overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-sm md:grid-cols-[0.8fr_1.2fr]">
-<div className="bg-[#1E3A5F] p-7 text-white sm:p-9"><span className="block h-1 w-10 rounded bg-[#F6B632]"/><p className="mt-5 text-sm font-bold uppercase tracking-[0.14em] text-[#F6B632]">Première étape</p><p className="mt-3 text-2xl font-bold leading-tight">Faire le point sur votre situation.</p></div>
-<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Comment commencer ?</h2><p className="mt-3 max-w-2xl leading-7 text-slate-700">Réservez un échange d’orientation de 5 minutes pour faire le point sur votre situation. Si l’accompagnement paraît adapté, la suite éventuelle vous sera expliquée à l’issue de cet échange.</p><a href="/orientation" className="mt-6 inline-flex rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#16304f] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2">Réserver un échange d’orientation <span className="ml-2">→</span></a></div>
-</section>
+
 <section className="mt-12">
-<div className="mb-5 max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Pendant le cycle</p><h2 className="mt-2 text-3xl font-bold">Un cadre clair pour avancer durablement</h2></div>
-<div className="accompaniment-cycle-grid grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2">
-<Card variant="blue" title="Axes de travail">
-<ul>
-<li>• organisation et priorisation ;</li>
-<li>• méthodes de travail actives ;</li>
-<li>• mathématiques et raisonnement ;</li>
-<li>• efficacité face aux exercices et aux blocages ;</li>
-<li>• confiance, stress et autonomie.</li>
-</ul>
-<p className="mt-3">Ces axes guident le travail ;
-ils ne constituent pas une garantie de résultat.</p>
-</Card>
-<Card variant="yellow" title="Fonctionnement">Le cycle comprend 12 séances collectives en ligne de 2 h, avec trois étudiants maximum par groupe et un créneau hebdomadaire fixe. Une seule réunion collective hebdomadaire de flash coaching de 30 minutes, commune à tous les étudiants de tous les groupes, est incluse mais facultative. Elle permet des questions et déblocages ponctuels, sans constituer une séance individuelle ni garantir le traitement de chaque question.</Card>
-<Card variant="default" title="Engagement attendu">Une demande réelle de l’étudiant, une participation active, la volonté de tester les méthodes proposées et l’acceptation du fonctionnement collectif comme du créneau fixe.</Card>
-<Card variant="navy" title="Limites">Obligation de moyens, sans garantie de résultat : ce n’est ni une solution miracle ni un accompagnement individuel permanent. L’admission dépend de l’adéquation du profil et de la capacité des groupes.</Card>
-</div>
+  <p className="text-center text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Le format en un coup d’œil</p>
+  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="rounded-2xl bg-[#1E3A5F] p-6 text-white"><p className="text-4xl font-black text-[#F6B632]">12</p><p className="mt-2 font-bold">semaines de cycle</p><p className="mt-1 text-sm leading-6 text-slate-200">Un cadre suffisamment long pour installer de nouvelles habitudes.</p></div>
+    <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6"><p className="text-4xl font-black text-[#1E3A5F]">2 h</p><p className="mt-2 font-bold">chaque semaine</p><p className="mt-1 text-sm leading-6 text-slate-600">Une séance collective en ligne, à créneau fixe.</p></div>
+    <div className="rounded-2xl border border-[#F6B632]/60 bg-[#FFF9EA] p-6"><p className="text-4xl font-black text-[#1E3A5F]">3</p><p className="mt-2 font-bold">étudiants maximum</p><p className="mt-1 text-sm leading-6 text-slate-600">Un petit groupe pour participer, se confronter et progresser.</p></div>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6"><p className="text-4xl font-black text-[#1E3A5F]">30 min</p><p className="mt-2 font-bold">de flash coaching</p><p className="mt-1 text-sm leading-6 text-slate-600">Une réunion collective facultative chaque semaine pour les déblocages ponctuels.</p></div>
+  </div>
 </section>
-<section className="mt-10 overflow-hidden rounded-3xl border border-[#F6B632] bg-[#FFF9EA] shadow-sm md:grid md:grid-cols-[0.8fr_1.2fr]">
-<div className="bg-[#F6B632] p-7 text-[#1E3A5F] sm:p-9"><p className="text-sm font-bold uppercase tracking-[0.14em]">Tarif du cycle</p><p className="mt-3 text-4xl font-bold">1 110 €</p><p className="mt-2 font-semibold">TTC</p></div>
-<div className="p-7 sm:p-9"><h2 className="text-2xl font-bold">Prix et modalités de règlement</h2><p className="mt-3 leading-7 text-slate-700">Règlement comptant ou en 3 échéances mensuelles de 370 € par virement bancaire, sans frais, sans intérêt, sans abonnement ni reconduction automatique.</p><p className="mt-3 text-sm leading-6 text-slate-600">TVA non applicable, article 293 B du CGI.</p></div>
+
+<section className="mt-14">
+  <div className="max-w-2xl">
+    <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Pendant le cycle</p>
+    <h2 className="mt-3 text-3xl font-bold text-[#1E3A5F]">Passer de « je ne sais pas par où commencer » à un plan de travail concret.</h2>
+  </div>
+  <div className="mt-7 grid gap-5 lg:grid-cols-3">
+    <article className="rounded-3xl border border-blue-100 bg-blue-50 p-7"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">1</span><h3 className="mt-5 text-xl font-bold">Comprendre et trier</h3><p className="mt-3 leading-7 text-slate-700">Repérer les priorités, choisir les bons exercices et savoir quoi faire lorsqu’un chapitre semble flou.</p></article>
+    <article className="rounded-3xl border border-[#F6B632]/60 bg-[#FFF9EA] p-7"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">2</span><h3 className="mt-5 text-xl font-bold">Travailler les mathématiques</h3><p className="mt-3 leading-7 text-slate-700">Développer le raisonnement, apprendre à chercher et utiliser un corrigé pour réellement progresser.</p></article>
+    <article className="rounded-3xl bg-[#1E3A5F] p-7 text-white"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F6B632] font-bold text-[#1E3A5F]">3</span><h3 className="mt-5 text-xl font-bold">Installer une méthode durable</h3><p className="mt-3 leading-7 text-slate-200">Construire une organisation tenable, prendre du recul sur les difficultés et avancer avec davantage d’autonomie.</p></article>
+  </div>
 </section>
+
+<section className={`mt-14 gap-5 ${requestReceived?"":"grid lg:grid-cols-[1.2fr_0.8fr]"}`}>
+  <div className="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Le bon cadre</p><h2 className="mt-3 text-3xl font-bold text-[#1E3A5F]">Un accompagnement collectif, exigeant et attentif.</h2><p className="mt-5 leading-7 text-slate-600">Il s’adresse aux étudiants de première ou deuxième année de CPGE scientifique, ainsi qu’aux Terminales qui veulent anticiper cette transition. L’étudiant doit avoir une vraie envie de s’impliquer et d’expérimenter les méthodes proposées.</p></div>
+  {!requestReceived&&<div className="rounded-3xl border border-blue-200 bg-blue-50 p-7 sm:p-9"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Première étape</p><h2 className="mt-3 text-2xl font-bold text-[#1E3A5F]">Faire le point, sans engagement.</h2><p className="mt-4 leading-7 text-slate-700">Un échange de 5 minutes permet de comprendre rapidement la situation de l’étudiant et de vérifier si ce format peut lui convenir.</p><a href="/orientation" className="mt-6 inline-flex rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#16304f]">Réserver un échange <span className="ml-2">→</span></a></div>}
+</section>
+
+<section className="mt-14 overflow-hidden rounded-3xl border border-[#F6B632] bg-[#FFF9EA] shadow-sm lg:grid lg:grid-cols-[0.72fr_1.28fr]">
+  <div className="bg-[#F6B632] p-8 text-[#1E3A5F] sm:p-10"><p className="text-sm font-bold uppercase tracking-[0.14em]">Cycle complet · 12 semaines</p><p className="mt-4 text-5xl font-black">1 110 €</p><p className="mt-2 text-lg font-bold">TTC</p><p className="mt-6 text-sm leading-6">Un prix transparent, pour un cadre et un accompagnement clairement définis.</p></div>
+  <div className="p-8 sm:p-10"><h2 className="text-2xl font-bold text-[#1E3A5F]">Un tarif clair, des modalités simples.</h2><p className="mt-4 leading-7 text-slate-700">Règlement comptant ou en trois échéances mensuelles de <strong>370 €</strong> par virement bancaire, sans frais, sans intérêt, sans abonnement ni reconduction automatique.</p><p className="mt-4 text-sm leading-6 text-slate-500">TVA non applicable, article 293 B du CGI. L’échange d’orientation permet de vérifier l’adéquation du format avant toute proposition de contrat.</p></div>
+</section>
+
 <Plaquette url={ACCOMPANIMENT_BROCHURE_URL} compact />
-<section className="mt-10 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9">
-<p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Le parcours</p><h2 className="mt-2 text-3xl font-bold">Déroulement de l’entrée</h2>
-<div className="mt-7 grid gap-4 sm:grid-cols-2">{["Réservation d’un échange d’orientation","Échange et diagnostic","Contrat individualisé et annexe","Virement puis confirmation de place"].map((step,index)=>
-<div key={step} className="flex gap-4 rounded-2xl border border-slate-100 bg-[#F8FAFC] p-5">
-<span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F] font-bold text-[#F6B632]">{index+1}</span>
-<p className="self-center font-semibold text-[#1E3A5F]">{step}</p>
-</div>)}</div>
-</section>
-<section className="mt-8">
-<h2 className="text-2xl font-bold">FAQ Accompagnement</h2>
-<div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux lycéens de Terminale visant une CPGE scientifique et aux étudiants de première ou deuxième année de CPGE scientifique.'],['Pourquoi réserver un échange d’orientation ?','Il permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement peut correspondre à ses besoins.'],['L’échange garantit-il une place ?','Non : une place peut être pré-réservée après accord sur un créneau, jusqu’à la date écrite dans le contrat. Elle est confirmée après acceptation du contrat, première échéance reçue et validation finale du groupe.'],['Comment se déroule la suite ?','Après l’échange et le diagnostic, un contrat individualisé et son annexe sont proposés si l’accompagnement est adapté. La confirmation de place est ensuite envoyée par e-mail après virement et validation finale du groupe.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=>
-<details key={q} className="py-4">
-<summary className="cursor-pointer font-semibold">{q}</summary>
-<p className="mt-2 text-slate-600">{a}</p>
-</details>)}</div>
-<div className="mt-8 rounded-3xl border border-blue-200 bg-blue-50 p-7 text-center md:p-10">
-  <h2 className="text-xl font-bold text-[#1E3A5F]">
-    L’accompagnement peut-il convenir à votre enfant ?
-  </h2>
 
-  <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-700">
-    Réservez un échange téléphonique de 5 minutes pour faire le point sur sa situation
-    et vous orienter vers la suite la plus adaptée.
-  </p>
-
-  <div className="mt-6 flex justify-center">
-    <Button
-      href="/orientation"
-    >
-      Réserver un échange d’orientation
-    </Button>
+<section className="mt-14 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9">
+  <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#3B82F6]">Le parcours</p><h2 className="mt-3 text-3xl font-bold text-[#1E3A5F]">Une entrée en quatre étapes simples.</h2>
+  <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="rounded-2xl bg-[#F8FAFC] p-5"><span className="text-sm font-black text-[#3B82F6]">01</span><p className="mt-3 font-bold">Échange d’orientation</p></div>
+    <div className="rounded-2xl bg-[#F8FAFC] p-5"><span className="text-sm font-black text-[#3B82F6]">02</span><p className="mt-3 font-bold">Diagnostic et réponse à vos questions</p></div>
+    <div className="rounded-2xl bg-[#F8FAFC] p-5"><span className="text-sm font-black text-[#3B82F6]">03</span><p className="mt-3 font-bold">Contrat individualisé et annexe</p></div>
+    <div className="rounded-2xl bg-[#F8FAFC] p-5"><span className="text-sm font-black text-[#3B82F6]">04</span><p className="mt-3 font-bold">Virement et confirmation de place</p></div>
   </div>
-
-  <div className="mt-5 flex flex-wrap items-center justify-center gap-x-1 text-sm leading-6 text-slate-600">
-    <span>Une question avant de commencer ?</span>
-    <a href="/contact" className="font-semibold text-blue-700 underline">Utilisez la page Contact</a>
-    <span>ou écrivez à</span><Email />.
-  </div>
-</div>
 </section>
+
+<section className="mt-12">
+  <h2 className="text-2xl font-bold text-[#1E3A5F]">Questions fréquentes</h2>
+  <div className="mt-4 divide-y divide-slate-200">{[['À qui s’adresse l’accompagnement ?','Aux étudiants de première ou deuxième année de CPGE scientifique, ainsi qu’aux Terminales qui souhaitent anticiper cette transition.'],['Pourquoi réserver un échange d’orientation ?','Il permet de répondre à vos premières questions, de comprendre rapidement la situation de l’étudiant et de vérifier si l’accompagnement peut correspondre à ses besoins.'],['L’échange garantit-il une place ?','Non : une place peut être pré-réservée après accord sur un créneau, jusqu’à la date écrite dans le contrat. Elle est confirmée après acceptation du contrat, première échéance reçue et validation finale du groupe.'],['L’accompagnement est-il individuel ?','Non : il se déroule en petit groupe de trois étudiants maximum.'],['Comment poser une question avant de commencer ?','Écrivez à contact@samuel-ducros.fr ou utilisez la page Contact.']].map(([q,a])=><details key={q} className="py-5"><summary className="cursor-pointer font-semibold text-[#1E3A5F]">{q}</summary><p className="mt-3 leading-7 text-slate-600">{a}</p></details>)}</div>
+</section>
+
+{!requestReceived&&<section className="mt-12 rounded-3xl bg-[#1E3A5F] p-8 text-center text-white sm:p-12"><p className="text-sm font-bold uppercase tracking-[0.14em] text-[#F6B632]">Avant de décider</p><h2 className="mx-auto mt-3 max-w-2xl text-3xl font-bold">Vérifions ensemble si cet accompagnement correspond à sa situation.</h2><p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-200">Réservez un échange téléphonique de 5 minutes. Vous pourrez expliquer votre contexte et connaître la suite la plus adaptée.</p><div className="mt-7 flex justify-center"><Button variant="hero" href="/orientation">Réserver un échange d’orientation</Button></div><p className="mt-5 text-sm text-slate-300">Une question ? Écrivez à <a className="font-semibold text-white underline underline-offset-4" href="mailto:contact@samuel-ducros.fr">contact@samuel-ducros.fr</a>.</p></section>}
 </Shell>}
 
 const OrientationQuestion=({children})=><div id="orientation-question" className="h-full min-h-0 overflow-y-auto rounded-3xl bg-white p-6 shadow-[0_20px_55px_rgba(30,58,95,0.14)] ring-1 ring-slate-200 sm:p-10">{children}</div>;
@@ -281,7 +269,7 @@ const submit=async e=>{
     const response=await fetch(ORIENTATION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     const result=await response.json().catch(()=>null);
     if(!response.ok)throw new Error(result?.message||'L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');
-    window.location.assign('/orientation/demande-recue');
+    window.location.assign('/accompagnement?demande=recue');
   }catch(error){setTurnstileToken('');setTurnstileKey(current=>current+1);setStatus(error.message||'L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez à contact@samuel-ducros.fr.');}
   finally{setSending(false);}
 };
@@ -292,12 +280,12 @@ if(step===2) content=<TextOrientationQuestion eyebrow="Question 2" title="Et vot
 if(step===3) content=<TextOrientationQuestion eyebrow="Question 3" title="Quelle est votre adresse e-mail ?" label="Adresse e-mail" name="orientation_email" type="email" value={email} onChange={setEmail} onNext={next} onBack={()=>setStep(2)} status={status} />;
 if(step===4) content=<TextOrientationQuestion eyebrow="Question 4" title="À quel numéro peut-on vous joindre ?" label="Numéro de téléphone" name="orientation_phone" type="tel" value={phone} onChange={setPhone} onNext={next} onBack={()=>setStep(3)} status={status} inputMode="tel" placeholder="06 12 34 56 78" />;
 if(step===5) content=<OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">Question 5</p><h2 className="mt-2 text-3xl font-bold">Quelle est la situation de l’étudiant ?</h2><p className="mt-3 leading-7 text-slate-600">Choisissez la réponse la plus proche.</p><div className="mt-7 grid gap-3">{[['Terminale - projet CPGE scientifique','Terminale — projet de CPGE scientifique'],['1re année de CPGE scientifique','Première année de CPGE scientifique'],['2e année de CPGE scientifique','Deuxième année de CPGE scientifique'],['Autre','Autre situation']].map(([value,label])=><button type="button" key={value} onClick={()=>chooseLevel(value)} className={`rounded-2xl border p-5 text-left font-bold text-[#1E3A5F] transition ${level===value?'border-[#1E3A5F] bg-blue-50':'border-slate-200 hover:border-[#3B82F6] hover:bg-blue-50'}`}>{label}<span className="float-right">→</span></button>)}</div>{level==='Autre'&&<div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50/60 p-5"><label className="block font-semibold text-slate-700">Préciser<input autoFocus name="orientation_other" value={otherTrack} onChange={e=>setOtherTrack(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();nextOther();}}} className="mt-2 w-full rounded-xl border border-slate-300 bg-white p-4 text-lg font-normal text-slate-900" autoComplete="off" placeholder="Par exemple : prépa intégrée, BUT, licence…" /></label><button type="button" onClick={nextOther} className="mt-5 rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white">Continuer <span className="ml-2">→</span></button></div>}<button type="button" onClick={()=>setStep(4)} className="mt-6 rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button>{status&&<p className="mt-4 text-sm text-red-700">{status}</p>}</OrientationQuestion>;
-if(step===6) content=<OrientationQuestion><div className="mx-auto flex min-h-full max-w-xl flex-col justify-center"><p className="text-sm font-bold uppercase tracking-[0.14em] text-blue-700">Question 6 · Facultatif</p><h1 className="mt-2 text-3xl font-black tracking-tight text-[#1E3A5F] sm:mt-3">Un peu plus de contexte ?</h1><p className="mt-3 leading-7 text-slate-600 sm:mt-4 sm:text-lg sm:leading-8">Un objectif, une difficulté, une matière concernée ou une question : cela m’aidera à préparer notre échange.</p><label htmlFor="orientation-notes" className="mt-6 block text-sm font-bold text-slate-700">Votre message <span className="font-medium text-slate-400">(facultatif)</span></label><textarea id="orientation-notes" name="orientation_notes" rows="4" autoComplete="off" value={notes} onChange={e=>setNotes(e.target.value)} placeholder="Ex. : difficultés en maths, projet d’intégrer une école précise, besoin de méthode…" className="mt-2 w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-100" /><div className="mt-6 flex gap-3"><button type="button" onClick={()=>setStep(5)} className="flex-1 rounded-xl border border-slate-300 px-5 py-3 font-bold text-slate-700">Retour</button><button type="button" onClick={()=>setStep(7)} className="flex-1 rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#152d4a]">Continuer</button></div></div></OrientationQuestion>;
-  if(step===7) content=<OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">Dernière question</p><h2 className="mt-2 text-3xl font-bold">Quels créneaux vous conviendraient ?</h2><p className="mt-3 leading-7 text-slate-600">Cochez un ou plusieurs créneaux possibles. Je vous appellerai dans l’une des disponibilités indiquées.</p><div className="mt-7 grid gap-3">{ORIENTATION_SLOTS.map(slot=><label key={slot} className={`cursor-pointer rounded-2xl border p-5 transition ${slots.includes(slot)?'border-[#1E3A5F] bg-blue-50':'border-slate-200 hover:border-blue-300'}`}><input type="checkbox" checked={slots.includes(slot)} onChange={()=>toggleSlot(slot)} className="mr-3" /><span className="font-bold text-[#1E3A5F]">{slot}</span></label>)}</div><label className="mt-5 block rounded-2xl border border-slate-200 p-5 font-semibold text-[#1E3A5F]">Aucun de ces créneaux ne convient<textarea value={availability} onChange={e=>setAvailability(e.target.value)} rows="3" placeholder="Indiquez simplement vos disponibilités." className="mt-3 w-full rounded-xl border border-slate-300 p-3 font-normal text-slate-900" autoComplete="off" /></label><p className="mt-7 text-sm leading-6 text-slate-600">Vos informations sont utilisées uniquement pour traiter votre demande d’orientation, conformément à la <a href="/confidentialite" className="underline">politique de confidentialité</a>.</p><div className="mt-5"><TurnstileWidget key={turnstileKey} onToken={setTurnstileToken}/></div><div className="mt-6 flex flex-wrap gap-3"><button type="button" onClick={()=>setStep(6)} className="rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button><button type="button" disabled={sending} onClick={submit} className="rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white disabled:opacity-60">{sending?'Envoi en cours…':'Envoyer ma demande'} <span className="ml-2">→</span></button></div>{status&&<p className="mt-4 text-sm text-red-700" role="alert">{status}</p>}</OrientationQuestion>;
+if(step===6) content=<OrientationQuestion><div className="mx-auto flex min-h-full max-w-xl flex-col justify-center"><p className="text-sm font-bold uppercase tracking-[0.14em] text-blue-700">Question 6 · Facultatif</p><h1 className="mt-2 text-3xl font-black tracking-tight text-[#1E3A5F] sm:mt-3">Un peu plus de contexte ?</h1><p className="mt-3 leading-7 text-slate-600 sm:mt-4 sm:text-lg sm:leading-8">Une difficulté en mathématiques, un besoin de méthode, une question sur le rythme de la prépa ou un objectif précis : cela m’aidera à préparer notre échange.</p><label htmlFor="orientation-notes" className="mt-6 block text-sm font-bold text-slate-700">Votre message <span className="font-medium text-slate-400">(facultatif)</span></label><textarea id="orientation-notes" name="orientation_notes" rows="4" autoComplete="off" value={notes} onChange={e=>setNotes(e.target.value)} placeholder="Ex. : difficulté sur les suites, méthode dans les exercices, rythme de travail ou projet d’école…" className="mt-2 w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-100" /><div className="mt-6 flex gap-3"><button type="button" onClick={()=>setStep(5)} className="flex-1 rounded-xl border border-slate-300 px-5 py-3 font-bold text-slate-700">Retour</button><button type="button" onClick={()=>setStep(7)} className="flex-1 rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white transition hover:bg-[#152d4a]">Continuer</button></div></div></OrientationQuestion>;
+  if(step===7) content=<OrientationQuestion><p className="text-sm font-bold uppercase tracking-[.14em] text-[#3B82F6]">Dernière question</p><h2 className="mt-2 text-3xl font-bold">Quels créneaux vous conviendraient ?</h2><p className="mt-3 leading-7 text-slate-600">Cochez un ou plusieurs créneaux possibles. Je vous appellerai dans l’une des disponibilités indiquées.</p><div className="mt-7 grid gap-3">{ORIENTATION_SLOTS.map(slot=><label key={slot} className={`cursor-pointer rounded-2xl border p-5 transition ${slots.includes(slot)?'border-[#1E3A5F] bg-blue-50':'border-slate-200 hover:border-blue-300'}`}><input type="checkbox" checked={slots.includes(slot)} onChange={()=>toggleSlot(slot)} className="mr-3" /><span className="font-bold text-[#1E3A5F]">{slot}</span></label>)}</div><label className="mt-5 block rounded-2xl border border-slate-200 p-5 font-semibold text-[#1E3A5F]">Ajouter d’autres disponibilités <span className="font-medium text-slate-400">(facultatif)</span><textarea value={availability} onChange={e=>setAvailability(e.target.value)} rows="3" placeholder="Par exemple : plutôt après 19 h, le samedi matin…" className="mt-3 w-full rounded-xl border border-slate-300 p-3 font-normal text-slate-900" autoComplete="off" /></label><p className="mt-7 text-sm leading-6 text-slate-600">Vos informations sont utilisées uniquement pour traiter votre demande d’orientation, conformément à la <a href="/confidentialite" className="underline">politique de confidentialité</a>.</p><div className="mt-5"><TurnstileWidget key={turnstileKey} onToken={setTurnstileToken}/></div><div className="mt-6 flex flex-wrap gap-3"><button type="button" onClick={()=>setStep(6)} className="rounded-xl border border-slate-300 px-5 py-3 font-bold text-[#1E3A5F]">Retour</button><button type="button" disabled={sending} onClick={submit} className="rounded-xl bg-[#1E3A5F] px-5 py-3 font-bold text-white disabled:opacity-60">{sending?'Envoi en cours…':'Envoyer ma demande'} <span className="ml-2">→</span></button></div>{status&&<p className="mt-4 text-sm text-red-700" role="alert">{status}</p>}</OrientationQuestion>;
 return <OrientationShell step={step} totalSteps={totalSteps}><div key={step} className="orientation-step h-full">{content}</div></OrientationShell>;
 }
 
-export function OrientationRequestReceived(){return <Shell eyebrow="Échange d’orientation" title="Votre demande a bien été transmise." intro="Je vous appellerai depuis le 06 69 26 55 98 dans les disponibilités que vous avez indiquées. Pensez à garder votre téléphone à proximité."/>}
+export function OrientationRequestReceived(){return <Shell eyebrow="Échange d’orientation" title="Votre demande a bien été transmise." intro="Je vous appellerai depuis le 06 69 26 55 98 dans les disponibilités que vous avez indiquées. Pensez à garder votre téléphone à proximité." action={<a href="/accompagnement" className="inline-flex rounded-xl bg-[#F6B632] px-5 py-3 font-bold text-[#1E3A5F]">Découvrir l’accompagnement <span className="ml-2">→</span></a>}/> }
 export function StagePaymentReceived(){return <Shell eyebrow="Stage Choc Prépa" title="Votre paiement a bien été reçu." intro="Nous terminons maintenant la vérification de votre inscription. Vous recevrez un e-mail de confirmation avec les prochaines étapes. Pensez à consulter votre dossier de courriers indésirables."/>}
 
 export function AccompanimentRequestReceived(){return <Shell eyebrow="Accompagnement CPGE" title="Votre demande a bien été transmise." intro="Nous allons vérifier si l’accompagnement correspond à la situation de l’étudiant. Si le profil est adapté, nous vous expliquerons par e-mail les prochaines étapes, dont le diagnostic, le contrat individualisé et son annexe. Pensez à consulter votre dossier de courriers indésirables."/>}
